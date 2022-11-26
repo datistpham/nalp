@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Thống kê </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+
+        .header {
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #242526;
+        }
+
+        .wrap-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #fff;
+        }
+
+        .s-header-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap-text-logo {
+            font-size: 36px;
+            font-weight: 600;
+            color: #fff;
+            padding: 0 30px;
+        }
+
+        .s-header-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .item-s-header-2 {
+            font-size: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 0 30px;
+        }
+
+        .s-header-3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .s-header-3-search {
+            width: 300px;
+            border-radius: 80px;
+            height: 40px;
+            background-color: #d9d9d9;
+            padding: 0 16px;
+
+        }
+
+        /*  */
+        .background {
+            position: fixed;
+            width: 100%;
+            height: calc(100vh - 80px);
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+        }
+
+        .background-1 {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+
+        .background-2 {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+
+        .background-3 {
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+
+        .img-background-1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-background-2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .img-background-3 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fa-home,
+        .fa-search,
+        .fa-cart-plus,
+        .fa-user {
+            color: #fff;
+            transform: scale(3);
+        }
+
+        .wrap-icon-1 {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*  */
+        .footer {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            z-index: 99;
+            bottom: 0;
+            background-color: #fff;
+            left: 0;
+        }
+
+        .footer-1 {
+            background-color: #fff;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .section-footer-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .text-section-footer-1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #000;
+
+        }
+
+        .footer-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .item-footer-2-1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .item-footer-2-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .wrap-footer-1 {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fa-facebook,
+        .fa-instagram,
+        .fa-snapchat,
+        .fa-arrow-right,
+        .fa-image,
+        .fa-arrow-down {
+            color: #000;
+            transform: scale(3);
+        }
+
+        .wrap-footer-2 {
+            width: 100%;
+            text-align: center;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .wrap-icon-2 {
+            width: 60px;
+            height: 60px;
+        }
+
+        /*  */
+        .background-1-text {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .background-1-text-1 {
+            font-size: 48px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .span-background-1-text-1 {
+            font-size: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .background-1-text-2 {
+            font-size: 18px;
+            color: #fff;
+            text-transform: uppercase;
+            width: 120px;
+        }
+
+        .background-2-text-1 {
+            text-align: center;
+            font-size: 48px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .background-2-text-2 {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .background-2-text-3 {
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .background-3-text-2 {
+            text-align: left;
+            font-size: 32px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-left: -80px;
+        }
+
+        .item-special-header-1 {
+            font-size: 36px;
+        }
+
+        .fhsudhsjkfđa {
+            background-color: #5c5c5c !important;
+            height: 79px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="s-header-1">
+            <a href="home.html">
+                <div class="wrap-icon">
+                    <i class="fa fa-home"></i>
+                </div>
+            </a>
+            <a href="home.html">
+                <div class="item-s-header-2">
+                    Tổng quan
+                </div>
+            </a>
+            <a href="categories.html">
+                <div class="item-s-header-2">
+                    Danh mục
+                </div>
+            </a>
+            <a href="product.html">
+                <div class="item-s-header-2">
+                    Sản phẩm
+                </div>
+            </a>
+        </div>
+        <div class="s-header-2">
+            <a href="home.html">
+                <div class="item-s-header-2 item-special-header-1">
+                    Nalp
+                </div>
+            </a>
+        </div>
+        <!--  -->
+        <div class="s-header-3">
+            <a href="revenue.html">
+                <div class="item-s-header-2 fhsudhsjkfđa">
+                    Báo cáo
+                </div>
+            </a>
+            <a href="payment.html">
+                <div class="item-s-header-2">
+                    Giao dịch
+                </div>
+            </a>
+            <a href="employee.html">
+                <div class="item-s-header-2">
+                    Nhân viên
+                </div>
+            </a>
+            <div class="wrap-icon-1">
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </div>
+    <style>
+        .main {
+            width: 100%;
+
+        }
+
+        .main-1 {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ias-asaa-ww {
+            font-size: 24px;
+            text-transform: uppercase;
+
+        }
+
+        .main-1-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .btn-main-1-2 {
+            padding: 10px 30px;
+            border-radius: 10px;
+            border: 2px solid #d9d9d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .main-1-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-main {
+            width: 100%;
+            padding: 30px;
+        }
+
+        .main-main-2 {
+            width: 100%;
+
+        }
+
+        .fake-thead {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #aeaeae;
+            height: 80px;
+            border-bottom: 1px solid #000;
+        }
+
+        .item-body-fake {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #e1e1e1;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+
+        }
+
+        .dddffddsdd {
+            width: 100px;
+        }
+
+        .texty-img-dds-sdjis {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .dkdjhdhjfksasdfssa {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .jdhsjkdhjdhajkdj {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .table-main-main-2 {
+            width: 100%;
+        }
+
+        .thead-main-main-2 {
+            width: 100%;
+        }
+
+        .tbody-main-main-2 {
+            width: 100%;
+        }
+
+        .fdjkdjdsfdsfsfdf {
+            height: 60px;
+        }
+
+        .sfdkjfjkfjskeaesas {
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .thead-main-main-2 {
+            background-color: #aeaeae;
+        }
+
+        .dhsjerhjenajkneasa {
+            text-align: center;
+        }
+
+        .sfdkjfjkfjskeaesas {
+            text-align: center;
+        }
+
+        .dhsjdhjfhdjdas {
+            height: 60px;
+        }
+
+        .jsdjksfjkdassas {
+            padding: 20px 0;
+            height: 100px;
+            background-color: #e1e1e1;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #000;
+        }
+    </style>
+    <div class="main">
+        <div class="main-1">
+            <div class="main-1-1">
+                <div class="wrap-icon-1 wrap-icon-2">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+                <div class="tex-t1 ias-asaa-ww">
+                    thống kê doanh thu
+                </div>
+            </div>
+            <div class="main-1-2">
+                <div class="dkdjhdhjfksasdfssa">
+                    <div class="jdhsjkdhjdhajkdj">Nhân viên: </div>
+                    <div class="btn-main-1-2">
+                        - Tất cả -
+                    </div>
+                </div>
+                <div class="dkdjhdhjfksasdfssa">
+                    <div class="jdhsjkdhjdhajkdj">Phòng: </div>
+                    <div class="btn-main-1-2">
+                        - Tất cả -
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .hdsjksdhjskfhjdsas {
+                width: 100%;
+                border-radius: 10px;
+                border: 1px solid #242526;
+                background-color: #f5f5f5;
+            }
+            .hszkjdhdhsdjsxsas {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 50px;
+            }
+            .ksdljdkldjkfjasas {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+            }
+            .hskjdhjsdhsjkshas {
+                font-weight: 600;
+                font-size: 24px;
+            }
+            .sddhjsjdhjdsddjs {
+                font-size: 24px;
+            }
+            .sddhjsjdhjdsddjs {
+                width: 300px;
+            }
+            .fa-arrow-down {
+                color: #cecdcd ;
+            }
+        </style>
+        <div class="main-main">
+            <div class="main-main-2">
+                <div class="hdsjksdhjskfhjdsas">
+                    <div class="hszkjdhdhsdjsxsas">
+                        <div class="ksdljdkldjkfjasas">
+                            <div class="hskjdhjsdhsjkshas">
+                                Loại thời gian: 
+                            </div>
+                            <div class="sddhjsjdhjdsddjs">
+                                Báo cáo theo tháng
+                            </div>
+                            <i class="fa fa-arrow-down"></i>
+
+                        </div>
+                        <div class="ksdljdkldjkfjasas">
+                            <div class="hskjdhjsdhsjkshas">
+                                Công ty: 
+                            </div>
+                            <div class="sddhjsjdhjdsddjs">
+                                NALP
+                            </div>
+                            <i class="fa fa-arrow-down"></i>
+
+                        </div>
+                    </div>
+                    <div class="hszkjdhdhsdjsxsas">
+                        <div class="ksdljdkldjkfjasas">
+                            <div class="hskjdhjsdhsjkshas">
+                                Ngày bắt đầu: 
+                            </div>
+                            <div class="sddhjsjdhjdsddjs">
+                                01/01/2022
+                            </div>
+                            <i class="fa fa-arrow-down"></i>
+
+                        </div>
+                        <div class="ksdljdkldjkfjasas">
+                            <div class="hskjdhjsdhsjkshas">
+                                Ngày kết thúc: 
+                            </div>
+                            <div class="sddhjsjdhjdsddjs">
+                                31/10/2022
+                            </div>
+                            <i class="fa fa-arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .hsfdhjskdhfjkdhnsaasads {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 16px 0;
+                    }
+                    .HSDJKHDJFHSJDdsjfkds, .fklfdjkdjfkdsasssa {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        gap: 20px;
+                    }
+                    .hsjhdjhdjkssfasfddas {
+                        width: 56px;
+                        height: 56px;
+                        object-fit: contain;
+                    }
+                    .gshdjgdhjgfhjgsasf {
+                        font-weight: 600;
+                        font-size: 24px;
+                    }
+                    .jxzlkjksljdkfassds {
+                        font-size: 24px;
+                    }
+                </style>
+                <div class="hsfdhjskdhfjkdhnsaasads">
+                    <div class="HSDJKHDJFHSJDdsjfkds">
+                        <div class="fklfdjkdjfkdsasssa">
+                            <img class="hsjhdjhdjkssfasfddas" src="https://www.freeiconspng.com/uploads/dollar-round-icon--18.png" alt="">
+                        </div>
+                        <div class="jsdhdhfjdhfsdfasfd">
+                            <div class="gshdjgdhjgfhjgsasf">
+                                986.721.500
+                            </div>
+                            <div class="jxzlkjksljdkfassds">
+                                Doanh thu
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HSDJKHDJFHSJDdsjfkds">
+                        <div class="fklfdjkdjfkdsasssa">
+                            <img class="hsjhdjhdjkssfasfddas" src="https://www.freeiconspng.com/uploads/dollar-round-icon--18.png" alt="">
+                        </div>
+                        <div class="jsdhdhfjdhfsdfasfd">
+                            <div class="gshdjgdhjgfhjgsasf">
+                                50.000.000
+                            </div>
+                            <div class="jxzlkjksljdkfassds">
+                                Tổng vốn
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HSDJKHDJFHSJDdsjfkds">
+                        <div class="fklfdjkdjfkdsasssa">
+                            <img class="hsjhdjhdjkssfasfddas" src="https://www.freeiconspng.com/uploads/dollar-round-icon--18.png" alt="">
+                        </div>
+                        <div class="jsdhdhfjdhfsdfasfd">
+                            <div class="gshdjgdhjgfhjgsasf">
+                                2.590.400
+                            </div>
+                            <div class="jxzlkjksljdkfassds">
+                                Trả hàng
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HSDJKHDJFHSJDdsjfkds">
+                        <div class="fklfdjkdjfkdsasssa">
+                            <img class="hsjhdjhdjkssfasfddas" src="https://www.freeiconspng.com/uploads/dollar-round-icon--18.png" alt="">
+                        </div>
+                        <div class="jsdhdhfjdhfsdfasfd">
+                            <div class="gshdjgdhjgfhjgsasf">
+                                890.450.00
+                            </div>
+                            <div class="jxzlkjksljdkfassds">
+                                Lợi nhuận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <style>
+                    .fgdsgfgfffsghbg {
+                        display: flex;
+                        align-items: center;
+                    }
+                    .hdsjdhjdhsjdxsksdsa {
+                        padding: 10px;
+                        font-size: 24px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .dzfdfsdddgfds {
+                        background: #5c5c5c;
+                        color: #fff;
+                    }
+                    .gheuidguhsghsdas {
+                        color: #000;
+                    }
+                </style>
+                <div class="fgdsgfgfffsghbg">
+                    <div class="hdsjdhjdhsjdxsksdsa dzfdfsdddgfds">
+                        Tổng quát
+                    </div>
+                    <div class="hdsjdhjdhsjdxsksdsa gheuidguhsghsdas">
+                        Chi tiết
+                    </div>
+                </div>
+                <style>
+                    .hsdkjhdjkhgjfsdsd {
+                        width: 100%;
+                        border: 1px solid #000;
+                        padding: 20px;
+                    }
+                    .hsjkdhjskfhjkdas {
+                        font-size: 24px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-bottom: 12px;
+                    }
+                    .hskdhjdhjfhdfjfsdds {
+                        width: 100%;
+                    }
+                    .hsjdhjfhdjfdsasas {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 24px;
+                    }
+                    .sushdudhjhajssa, .sjdhsdjfdhfslasasada, .sfjhdjkdshfjkhsdaasas {
+                        font-size: 24px;
+                        text-transform: uppercase;
+                    }
+                    .sjdhsdjfdhfslasasada {
+                        position: relative;
+                    }
+                    .shdhdjsdhjdhsjdsa {
+                        border: 2px solid #d9d9d9;
+                        flex: 1 1 0;
+                    }
+                    .fhjashgjfhsddas {
+                        border-color: #000;
+                    }
+                    .shjfdhfjkhjdssdsadas {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 80px;
+                    }
+                    .shfkjahskjhfjsdsdas {
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 60px;
+                        z-index: 99;
+                        background-color: #fab1f7;
+                        bottom: 70px;
+
+                    }
+                    .ghkjasdhjksdhjas {
+                        height: 300px;
+                    }
+                    .fiyerueaslassda {
+                        height: 200px;
+                    }
+                    .ghusyfuerhsaearea {
+                        height: 400px;
+                    }
+                    .dfiywuetgyhsdjdhjka {
+                        height: 150px;
+                    }
+                    .gfhudghjkdhajksissa {
+                        height: 175px;
+                    }
+                </style>
+                <div class="hsdkjhdjkhgjfsdsd">
+                    <div class="hsjkdhjskfhjkdas">Doanh thu theo thời gian</div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">60m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">50m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">40m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">30m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">20m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">10m</div>
+                            <div class="shdhdjsdhjdhsjdsa"></div>
+                        </div>
+                    </div>
+                    <div class="hskdhjdhjfhdfjfsdds">
+                        <div class="hsjdhjfhdjfdsasas">
+                            <div class="sushdudhjhajssa">0m</div>
+                            <div class="shdhdjsdhjdhsjdsa fhjashgjfhsddas"></div>
+                        </div>
+                    </div>
+                    <div class="shjfdhfjkhjdssdsadas">
+                        <div class="sjdhsdjfdhfslasasada">
+                            <div class="sfjhdjkdshfjkhsdaasas">
+                                06/2022 
+                            </div>
+                            <div class="shfkjahskjhfjsdsdas ghkjasdhjksdhjas"></div>
+                        </div>
+                        <div class="sjdhsdjfdhfslasasada">
+                            <div class="sfjhdjkdshfjkhsdaasas gfilfyhdidhljkea">
+                                07/2022 
+                            </div>
+                            <div class="shfkjahskjhfjsdsdas fiyerueaslassda"></div>
+                        </div>
+                        <div class="sjdhsdjfdhfslasasada">
+                            <div class="sfjhdjkdshfjkhsdaasas">
+                                08/2022 
+                            </div>
+                            <div class="shfkjahskjhfjsdsdas ghusyfuerhsaearea"></div>
+                        </div>
+                        <div class="sjdhsdjfdhfslasasada">
+                            <div class="sfjhdjkdshfjkhsdaasas">
+                                09/2022 
+                            </div>
+                            <div class="shfkjahskjhfjsdsdas dfiywuetgyhsdjdhjka"></div>
+                        </div>
+                        <div class="sjdhsdjfdhfslasasada">
+                            <div class="sfjhdjkdshfjkhsdaasas">
+                                10/2022 
+                            </div>
+                            <div class="shfkjahskjhfjsdsdas gfhudghjkdhajksissa"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .djskldjkjkfassa {
+            height: 80px;
+        }
+    </style>
+    <div class="djskldjkjkfassa"></div>
+    <div class="footer">
+        <div class="wrap-footer-1">
+            <div class="footer-1">
+                <div class="section-footer-1">
+                    <div class="text-section-footer-1">
+                        About Nalp
+                    </div>
+                    <div class="text-section-footer-1">
+                        Help
+                    </div>
+                    <div class="text-section-footer-1">
+                        Recruit
+                    </div>
+                </div>
+                <div class="section-footer-2">
+
+                </div>
+            </div>
+            <div class="footer-2">
+                <div class="item-footer-2-1">
+                    Store system
+                </div>
+                <div class="item-footer-2-2">
+                    <div class="wrap-icon-1 wrap-icon-2">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="wrap-icon-1 wrap-icon-2">
+                        <i class="fa fa-instagram"></i>
+                    </div>
+                    <div class="wrap-icon-1 wrap-icon-2">
+                        <i class="fa fa-snapchat"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-footer-2">
+            <i class="fa fa-copyright"></i> Copyright 2020 Nalp studio
+        </div>
+    </div>
+    <!-- background -->
+
+</body>
+
+</html>
